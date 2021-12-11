@@ -1,0 +1,202 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>sushi frontend</title>
+    <style>
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+      }
+      .buttons {
+        background-image: url("images/sushiXPress.png");
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+    </style>
+    <style>
+        #btn1 {
+            position: fixed;
+            left: 12%;
+            top: 41%;
+        }
+        #btn2 {
+            position: fixed;
+            left: 12%;
+            top: 56%;
+        }
+        #btn3 {
+            position: fixed;
+            left: 12%;
+            top: 72%;
+        }
+        #btn4 {
+            position: fixed;
+            left: 12%;
+            top: 88%;
+        }
+        #btn5 {
+            position: fixed;
+            left: 42%;
+            top: 41%;
+        }
+        #btn6 {
+            position: fixed;
+            left: 42%;
+            top: 56%;
+        }
+        #btn7 {
+            position: fixed;
+            left: 42%;
+            top: 72%;
+        }
+        #btn8 {
+            position: fixed;
+            left: 42%;
+            top: 88%;
+        }
+        #fin {
+            position: fixed;
+            left: 75%;
+            top: 60%;
+        }
+        #bill {
+            position: fixed;
+            left: 75%;
+            top: 70%;
+        }
+    </style>
+</head>
+  
+<body>
+    
+    <div class="buttons"> 
+        <button id="btn1"
+                onclick="addToTotal(300, 'California Roll - $3.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          California Roll - $3.00
+      	</button>
+      
+      <br><br>
+      
+      <button id="btn2"
+                onclick="addToTotal(400, 'Salmon Roll - $4.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          Salmon Roll - $4.00
+      	</button>
+      
+      <br><br>
+      
+      <button id="btn3"
+                onclick="addToTotal(500, 'Shrimp Tempura Roll - $5.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          Shrimp Tempura Roll - $5.00
+      	</button>
+      
+      <br><br>
+      
+      <button id="btn4"
+                onclick="addToTotal(400, 'Spicy Tuna Roll - $4.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          Spicy Tuna Roll - $4.00
+      	</button>
+      
+      <br><br>
+      
+      <button id="btn5"
+                onclick="addToTotal(500, 'Monster Roll - $5.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          Monster Roll - $5.00
+      	</button>
+      
+      <br><br>
+      
+      <button id="btn6"
+                onclick="addToTotal(400, 'Dragon Roll - $4.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          Dragon Roll - $4.00
+      	</button>
+      
+      <br><br>
+    
+        <button id="btn7"
+                onclick="addToTotal(300, 'Philly Roll - $3.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          Philly Roll - $3.00
+      	</button>
+      
+      <br><br>
+          
+        <button id="btn8"
+                onclick="addToTotal(400, 'Rainbow Roll - $4.00')"
+                style= "background-color:#ffffff;
+                		font-size:18px;
+                        font-family:serif;
+                        border-radius: 10px;">
+          Rainbow Roll - $4.00
+      	</button>
+      
+      <br><br>
+      
+        <button id="fin"
+                onclick="sendFinish()"
+                style= "background-color:#ffffff;
+                		font-size:48px;
+                        font-family:serif;
+                        border-radius: 10px;">Checkout</button>
+
+        <br><br>
+
+        <button id="bill"
+                onclick="window.location.href='/bill'"
+                style= "background-color:#ffffff;
+                		font-size:48px;
+                        font-family:serif;
+                        border-radius: 10px;">Show Bill</button>
+    </div>
+  
+    <script> 
+    const apiurl = "http://127.0.0.1:5000";
+
+    function addToTotal(cents, sushi_name) {
+        const addurl = apiurl.concat('/add/').concat(cents).concat('/').concat(sushi_name);
+        const req = new Request(addurl);
+        console.log("CALLED ADD");
+
+        fetch(req);
+    }
+
+    function sendFinish() {
+        const finishurl = apiurl.concat('/finish/')
+        const req = new Request(finishurl);
+
+        fetch(req);
+    }
+    </script>
+</body>
+</html>
